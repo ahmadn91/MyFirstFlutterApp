@@ -4,13 +4,19 @@ void main() => runApp(MaterialApp(
       home: IdCard(),
     ));
 
-class IdCard extends StatelessWidget {
+class IdCard extends StatefulWidget {
+  @override
+  State<IdCard> createState() => _IdCardState();
+}
+
+class _IdCardState extends State<IdCard> {
+  int level = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Text("Id Card App"),
+        title: Text("My First F*cking App"),
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0,
@@ -54,21 +60,50 @@ class IdCard extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                "Title",
+                "Level",
                 style: TextStyle(
                   color: Colors.grey,
                   letterSpacing: 2,
                 ),
               ),
               SizedBox(height: 10),
-              Text(
-                "Technical Manager",
-                style: TextStyle(
-                  color: Colors.amberAccent[200],
-                  letterSpacing: 2,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+              Row(
+                children: [
+                  Text(
+                    "$level",
+                    style: TextStyle(
+                      color: Colors.amberAccent[200],
+                      letterSpacing: 2,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        level += 1;
+                      });
+                    },
+                    icon: Icon(
+                      Icons.add,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          level -= 1;
+                        });
+                      },
+                      icon: Icon(
+                        Icons.remove,
+                      )),
+                ],
               ),
               SizedBox(
                 height: 20,
